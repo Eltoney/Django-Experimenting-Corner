@@ -2,36 +2,16 @@ from django.test import TestCase
 from django.urls import reverse
 from .models import Book
 from .serializers import BookSerializer
-from django.contrib.auth.models import User
-from rest_framework.authtoken.models import Token
+# from django.contrib.auth.models import User
+# from rest_framework.authtoken.models import Token
 import pytest
+from pytest_gloabl_helpers import (
+    api_client, create_admin_token, create_user_token)
 
 # Create your tests here.
 
-
 def create_book(title='title', price=1):
     return Book.objects.create(title=title, price=price)
-
-
-def create_user_token():
-    User.objects.create_user('user', 'user@test.com', 'testuser')
-    user = User.objects.get(username='user')
-    token, _ = Token.objects.get_or_create(user=user)
-    return token
-
-
-def create_admin_token():
-    User.objects.create_superuser('admin', 'admin@test.com', 'adminuser')
-    user = User.objects.get(username='admin')
-    token, _ = Token.objects.get_or_create(user=user)
-    return token
-
-
-@pytest.fixture
-def api_client():
-    from rest_framework.test import APIClient
-    return APIClient()
-
 
 @pytest.mark.django_db
 def test_admin_get_all_books(api_client):
