@@ -5,7 +5,7 @@ from .serializers import BookSerializer
 # from django.contrib.auth.models import User
 # from rest_framework.authtoken.models import Token
 import pytest
-from pytest_gloabl_helpers import (
+from utils.pytest_gloabl_helpers import (
     admin_api_client, user_api_client)
 
 # Create your tests here.

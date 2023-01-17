@@ -3,7 +3,7 @@ import pytest
 from django.urls import reverse
 from .models import Snack
 from .serializers import SnackSerializer
-from pytest_gloabl_helpers import (
+from utils.pytest_gloabl_helpers import (
     admin_api_client, user_api_client)
 # Create your tests here.
 
